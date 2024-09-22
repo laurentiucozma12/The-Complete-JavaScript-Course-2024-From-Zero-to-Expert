@@ -36,6 +36,8 @@ document.querySelector('.btn--roll').addEventListener('click', event => {
   let randomNumber = Math.trunc(Math.random() * 6 + 1);
   console.log('Random number: ' + randomNumber);
 
+  // BUG: When randomNumber becomes 1, swaps the player, but it adds to the sum 1
+  // it should be 0
   if (randomNumber === 1) {
     if (player === 1) {
       sumPlayer1 = 0;
