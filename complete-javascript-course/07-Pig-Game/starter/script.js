@@ -34,10 +34,9 @@ const changePlayerTurn = function () {
 
 document.querySelector('.btn--roll').addEventListener('click', event => {
   let randomNumber = Math.trunc(Math.random() * 6 + 1);
+  let randomImage = randomNumber;
   console.log('Random number: ' + randomNumber);
 
-  // BUG: When randomNumber becomes 1, swaps the player, but it adds to the sum 1
-  // it should be 0
   if (randomNumber === 1) {
     if (player === 1) {
       sumPlayer1 = 0;
@@ -55,11 +54,11 @@ document.querySelector('.btn--roll').addEventListener('click', event => {
   if (player === 1) {
     sumPlayer1 += randomNumber;
     currentScorePlayer1.textContent = `${sumPlayer1}`;
-    document.querySelector('.dice').src = `dice-${randomNumber}.png`;
+    document.querySelector('.dice').src = `dice-${randomImage}.png`;
   } else {
     sumPlayer2 += randomNumber;
     currentScorePlayer2.textContent = `${sumPlayer2}`;
-    document.querySelector('.dice').src = `dice-${randomNumber}.png`;
+    document.querySelector('.dice').src = `dice-${randomImage}.png`;
   }
 });
 
@@ -81,4 +80,17 @@ document.querySelector('.btn--hold').addEventListener('click', event => {
   }
 
   changePlayerTurn();
+});
+
+document.querySelector('.btn--new').addEventListener('click', event => {
+  sumPlayer1 = 0;
+  sumPlayer2 = 0;
+  sumScorePlayer1 = 0;
+  sumScorePlayer2 = 0;
+  player = 1;
+  document.querySelector('.dice').src = `dice-6.png`;
+  scorePlayer1.textContent = 0;
+  currentScorePlayer1.textContent = 0;
+  scorePlayer2.textContent = 0;
+  currentScorePlayer2.textContent = 0;
 });
