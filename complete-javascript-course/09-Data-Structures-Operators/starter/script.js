@@ -26,6 +26,10 @@ const restaurant = {
       close: 24,
     },
   },
+
+  orderDelivery: function (obj) {
+    console.log(obj);
+  },
 };
 
 const { name, openingHours, categories } = restaurant;
