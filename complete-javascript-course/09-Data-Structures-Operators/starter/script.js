@@ -27,3 +27,36 @@ const restaurant = {
     },
   },
 };
+
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
+
+// Default Values
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
+
+// Mutating Variables
+let a = 111;
+let b = 999;
+
+const obj = { a: 23, b: 7, c: 14 };
+console.log(a, b); // 111 999
+console.log(obj.a, obj.b); // 23 7
+
+({ a, b } = obj);
+console.log(a, b); // 23 7
+
+// Nested Objects
+// const { fri } = openingHours;
+// console.log(fri);
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+console.log(o, c); // 11 23
