@@ -41,10 +41,44 @@ const restaurant = {
   orderPasta: function (ing1, ing2, ing3) {
     console.log(`Here is your pasta with ${ing1}, ${ing2}, and ${ing3}`);
   },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
 
 const ingredients = [];
 
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a);
+console.log(b);
+console.log(others);
+
+// const [pizza, , risotto, ...otherFood] = [
+//   ...restaurant.mainMenu,
+//   ...restaurant.starterMenu,
+// ];
+// console.log(pizza, risotto, otherFood);
+
+// // Objects
+// const { sat, ...weekdays } = restaurant.openingHours;
+// console.log(sat, weekdays);
+
+// functions
+// const add = function (...num) {
+//   let sum = 0;
+//   for (let i = 0; i < num.length; i++) sum += num[i];
+
+//   console.log(sum);
+// };
+
+// add(2, 3);
+// add(5, 3, 7, 2);
+
+/*
 // old
 const { name, openingHours, categories } = restaurant;
 console.log(name, openingHours, categories);
@@ -78,3 +112,4 @@ const {
   fri: { open: o, close: c },
 } = openingHours;
 console.log(o, c); // 11 23
+*/
