@@ -48,14 +48,41 @@ const restaurant = {
   },
 };
 
-restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+const rest1 = { name: 'Capri', numGuests: 0 };
+const rest2 = { name: 'La Piazza', owner: 'Giovanni Rossi' };
 
-const ingredients = [];
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
 
-const [a, b, ...others] = [1, 2, 3, 4, 5];
-console.log(a);
-console.log(b);
-console.log(others);
+// rest1.owner = rest1.owner && '<ANONYMOUS>';
+// rest2.owner = rest2.owner && '<ANONYMOUS>';
+rest1.owner ??= '<ANONYMOUS>'; // This is Falsy, since there is no owner, nothing happens
+rest2.owner ??= '<ANONYMOUS>'; // This is Truthy, this is why Giovanni was replaced by <ANONYMOUS>
+
+console.log(rest1); // {name: 'Capri', numGuests: 0, owner: undefined}
+console.log(rest2); // {name: 'La Piazza', owner: '<ANONYMOUS>',  numGuests: 10}
+
+// const rest1 = { name: 'Capri', numGuests: 20 };
+// const rest2 = { name: 'La Piazza', owner: 'Giovanni Rossi' };
+
+// // OR assignment operator
+// // rest1.numGuests = rest1.numGuests || 10; // 10
+// // rest2.numGuests = rest2.numGuests || 10; // 10
+
+// rest1.numGuests ||= 10; // 10
+// rest2.numGuests ||= 10; // 10
+
+// console.log(rest1);
+// console.log(rest2);
+
+// restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+
+// const ingredients = [];
+
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
+// console.log(a);
+// console.log(b);
+// console.log(others);
 
 // const [pizza, , risotto, ...otherFood] = [
 //   ...restaurant.mainMenu,
