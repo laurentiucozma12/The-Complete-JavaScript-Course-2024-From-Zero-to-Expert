@@ -48,11 +48,25 @@ const restaurant = {
   },
 };
 
-const rest1 = { name: 'Capri', numGuests: 0 };
-const rest2 = { name: 'La Piazza', owner: 'Giovanni Rossi' };
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
-rest1.numGuests ??= 10;
-rest2.numGuests ??= 10;
+for (const item of menu) console.log(item);
+
+// 1. You can write it like this
+// for (const item of menu.entries()) {
+//   console.log(`${item[0] + 1}: ${item[1]}`);
+// }
+
+// 2. Or better using destructuring like this
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
+// const rest1 = { name: 'Capri', numGuests: 0 };
+// const rest2 = { name: 'La Piazza', owner: 'Giovanni Rossi' };
+
+// rest1.numGuests ??= 10;
+// rest2.numGuests ??= 10;
 
 // rest1.owner = rest1.owner && '<ANONYMOUS>';
 // rest2.owner = rest2.owner && '<ANONYMOUS>';
