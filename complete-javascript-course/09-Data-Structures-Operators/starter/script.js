@@ -56,11 +56,11 @@ rest2.numGuests ??= 10;
 
 // rest1.owner = rest1.owner && '<ANONYMOUS>';
 // rest2.owner = rest2.owner && '<ANONYMOUS>';
-rest1.owner ??= '<ANONYMOUS>'; // This is Falsy, since there is no owner, nothing happens
-rest2.owner ??= '<ANONYMOUS>'; // This is Truthy, this is why Giovanni was replaced by <ANONYMOUS>
+// rest1.owner ??= '<ANONYMOUS>'; // This is Falsy, since there is no owner, nothing happens
+// rest2.owner ??= '<ANONYMOUS>'; // This is Truthy, this is why Giovanni was replaced by <ANONYMOUS>
 
-console.log(rest1); // {name: 'Capri', numGuests: 0, owner: undefined}
-console.log(rest2); // {name: 'La Piazza', owner: '<ANONYMOUS>',  numGuests: 10}
+// console.log(rest1); // {name: 'Capri', numGuests: 0, owner: undefined}
+// console.log(rest2); // {name: 'La Piazza', owner: '<ANONYMOUS>',  numGuests: 10}
 
 // const rest1 = { name: 'Capri', numGuests: 20 };
 // const rest2 = { name: 'La Piazza', owner: 'Giovanni Rossi' };
