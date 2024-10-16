@@ -44,19 +44,50 @@ const restaurant = {
   },
 };
 
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// Optional Chaining
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.mon.open);
 
-for (const item of menu) console.log(item);
+// console.log(restaurant.openingHours.mon.open);
 
-// 1. You can write it like this
-// for (const item of menu.entries()) {
-//   console.log(`${item[0] + 1}: ${item[1]}`);
-// }
+// WITH optional chaining
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
 
-// 2. Or better using destructuring like this
-for (const [i, el] of menu.entries()) {
-  console.log(`${i + 1}: ${el}`);
+// Example
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`On ${day}, we open at ${open}`);
 }
+
+// Methods
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist');
+
+// Arrays
+const users = [{ name: 'Jonas', email: 'hello@jonas.io' }];
+// const users = [];
+
+console.log(users[0]?.name ?? 'User array empty');
+
+if (users.length > 0) console.log(users[0].name);
+else console.log('user array empty');
+
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+// for (const item of menu) console.log(item);
+
+// // 1. You can write it like this
+// // for (const item of menu.entries()) {
+// //   console.log(`${item[0] + 1}: ${item[1]}`);
+// // }
+
+// // 2. Or better using destructuring like this
+// for (const [i, el] of menu.entries()) {
+//   console.log(`${i + 1}: ${el}`);
+// }
 
 // const rest1 = { name: 'Capri', numGuests: 0 };
 // const rest2 = { name: 'La Piazza', owner: 'Giovanni Rossi' };
