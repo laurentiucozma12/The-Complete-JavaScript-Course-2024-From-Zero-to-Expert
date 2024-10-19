@@ -29,4 +29,7 @@ const gameEvents = new Map([
   [92, '🟨 Yellow card'],
 ]);
 
-const events = Set(gameEvents);
+const entry = gameEvents.entries();
+console.log(entry);
+const events = new Set(gameEvents.entries());
+console.log(events);
