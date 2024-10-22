@@ -45,48 +45,112 @@ const restaurant = {
 };
 
 const airline = 'TAP Air Portugal';
-const plane = 'A320';
-console.log(plane[0]); // A
-console.log(plane[1]); // 3
-console.log(plane[2]); // 2
-console.log(plane[3]); // 0
-console.log('B737'[0]); // B
 
-console.log(airline.length); // 16
-console.log('B737'.length); // 4
+console.log(airline.toLowerCase()); // tap air portugal
+console.log(airline.toUpperCase()); // TAP AIR PORTUGAL
 
-console.log(airline.indexOf('r')); // 6
-console.log(airline.lastIndexOf('r')); // 10
-console.log(airline.lastIndexOf('Portugal')); // 8
+//// Ex. 1 Fix capitalization in name
+const passenger = 'jOnAs';
+const passengerLower = passenger.toLowerCase(); // jonas
+const firstLetter = passengerLower[0].toLocaleUpperCase(); // J
+const correctName = firstLetter + passengerLower.slice(1); // J + onas
+console.log(correctName); // Jonas
 
-console.log(airline.slice(4)); // Air Portugal
-console.log(airline.slice(4, 7)); // Air
+//// Ex. 2 Comparing email
+const email = 'hello@jonas.io';
+const loginEmail = '    Hello@Jonas.Io   \n';
+// Solution 1
+// let correctEmail = loginEmail.toLowerCase();
+// console.log(correctEmail); // '    hello@jonas.io   \n'
+// correctEmail = correctEmail.trim();
+// console.log(correctEmail); // hello@jonas.io
 
-console.log(airline.slice(0, airline.indexOf(' '))); // TAP
-console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // Portugal
+// Solution 2
+const correctEmail = loginEmail.toLowerCase().trim();
+console.log(correctEmail); // hello@jonas.io
 
-console.log(airline.slice(-2)); // al
-console.log(airline.slice(1, -1)); // AP Air Portuga
+//// Ex. 3 Replacing
+const priceGB = '299,99£';
+const priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS); // 299.99$
 
-const checkMiddleSeat = function (seat) {
-  // B and E are middle seats
-  //// My solution
-  // if (seat.lastIndexOf('B') === -1 && seat.lastIndexOf('E') === -1) {
-  //   console.log(`Seat ${seat} is NOT a middle seat`);
-  // } else {
-  //   console.log(`Seat ${seat} is a middle seat`);
-  // }
-  //// His solution
-  const s = seat.slice(-1);
-  if (s === 'B' || s === 'E') {
-    console.log('You got the middle seat');
+const announcements =
+  'All passengers come to barding door 23. Boarding door 23!';
+
+// Solution 1 - Regular expression / /, and the g means global
+// console.log(announcements.replace(/door/g, 'gate')); // All passengers come to barding gate 23. Boarding gate 23!
+
+// Solution 2
+console.log(announcements.replaceAll('door', 'gate')); // All passengers come to barding gate 23. Boarding gate 23!
+
+//// Ex. 4 Booleans
+const plane = 'Airbus A320neo';
+console.log(plane.includes('A320')); // true
+console.log(plane.includes('Boeing')); // false
+console.log(plane.startsWith('Bir')); // false
+console.log(plane.startsWith('A')); // true
+console.log(plane.startsWith('Air')); // true
+
+if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
+  console.log('Part of the NEW Airbus family'); // Part of the NEW Airbus family
+}
+
+//// Ex. 5
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are not allowed on board');
   } else {
-    console.log('You got lucky');
+    console.log('Welcome aboard!');
   }
 };
-checkMiddleSeat('11B'); // Seat 11B is a middle seat
-checkMiddleSeat('23C'); // Seat 23C is NOT a middle seat
-checkMiddleSeat('3E'); // Seat 3E is a middle seat
+
+checkBaggage('I have a laptop, some Food and a pocket Knife'); // You are not allowed on board
+checkBaggage('Socks and camera'); // Welcome aboard!
+checkBaggage('Got some snacks and a gun for protection'); // You are not allowed on board
+
+// const plane = 'A320';
+// console.log(plane[0]); // A
+// console.log(plane[1]); // 3
+// console.log(plane[2]); // 2
+// console.log(plane[3]); // 0
+// console.log('B737'[0]); // B
+
+// console.log(airline.length); // 16
+// console.log('B737'.length); // 4
+
+// console.log(airline.indexOf('r')); // 6
+// console.log(airline.lastIndexOf('r')); // 10
+// console.log(airline.lastIndexOf('Portugal')); // 8
+
+// console.log(airline.slice(4)); // Air Portugal
+// console.log(airline.slice(4, 7)); // Air
+
+// console.log(airline.slice(0, airline.indexOf(' '))); // TAP
+// console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // Portugal
+
+// console.log(airline.slice(-2)); // al
+// console.log(airline.slice(1, -1)); // AP Air Portuga
+
+// const checkMiddleSeat = function (seat) {
+//   // B and E are middle seats
+//   //// My solution
+//   // if (seat.lastIndexOf('B') === -1 && seat.lastIndexOf('E') === -1) {
+//   //   console.log(`Seat ${seat} is NOT a middle seat`);
+//   // } else {
+//   //   console.log(`Seat ${seat} is a middle seat`);
+//   // }
+//   //// His solution
+//   const s = seat.slice(-1);
+//   if (s === 'B' || s === 'E') {
+//     console.log('You got the middle seat');
+//   } else {
+//     console.log('You got lucky');
+//   }
+// };
+// checkMiddleSeat('11B'); // Seat 11B is a middle seat
+// checkMiddleSeat('23C'); // Seat 23C is NOT a middle seat
+// checkMiddleSeat('3E'); // Seat 3E is a middle seat
 
 // const rest = new Map();
 // rest.set('name', 'Classico Italiano');
