@@ -8,14 +8,13 @@ const flights =
 //   🔴 Delayed Arrival from HEL to FAO (12h05)
 //            Departure from FAO to LIS (12h30)
 
+const getCode = str => str.slice(0, 3).toUpperCase();
+
 for (const flight of flights.split('+')) {
   const [type, from, to, time] = flight.split(';');
-  const typeCalc = type.slice(1).split('_');
-  // let delayed = '';
-  // if (typeCalc[0] === 'Delayed') {
-  //   delayed = '🔴 Delayed ';
-  // }
-  // const typeResult = `${delayed ? 'a' : 'b'} ${typeCalc[1]}`;
-  const output = `${typeResult} from ${from.toUpperCase().slice(0, 3)} to ${to.toUpperCase().slice(0, 3)} (${time.split(':').join('h')})`;
+  const output =
+    `${type.startsWith('_Delayed') ? '🔴' : ''}${type.replaceAll('_', ' ')} from ${getCode(from)} to ${getCode(to)} (${time.replace(':', 'h')})`.padStart(
+      36,
+    );
   console.log(output);
 }
