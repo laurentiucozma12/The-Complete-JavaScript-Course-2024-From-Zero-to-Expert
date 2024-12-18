@@ -21,7 +21,6 @@ const createBooking = function (
     numPassengers,
     price,
   };
-
   console.log(booking);
   bookings.push(booking);
 };
