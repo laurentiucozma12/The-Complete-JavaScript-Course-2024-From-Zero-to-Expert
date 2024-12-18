@@ -1,5 +1,6 @@
 'use strict';
 
+/*
 const bookings = [];
 
 // ES6
@@ -53,3 +54,33 @@ createBooking('LH123', 1000); // This will be numPassenger NOT the price
 createBooking('LH123', undefined, 1000); // {flightNum: 'LH123', numPassengers: 1, price: 1000}
 // !!! Setting a parameter to undifend is the same as NOT even setting it !!!
 // This is how to skip a default parameter that we want to leav at its default
+
+*/
+
+const flight = 'LH234';
+const jonas = { name: 'Jonas Schmedtmann', passport: 12345678901 };
+
+const checkIn = function (flightNum, passenger) {
+  flightNum = 'Lh999';
+  passenger.name = 'Mr. ' + passenger.name;
+  if (passenger.passport === 12345678901) {
+    alert('check in');
+  } else {
+    alert('wrong passport');
+  }
+};
+
+// checkIn(flight, jonas);
+// console.log(flight);
+// console.log(jonas);
+
+// // Is the same as doing...
+// const flightNum = flight;
+// const passenger = jonas;
+
+const newPassport = function (person) {
+  person.passport = Math.trunc(Math.random() * 1000000);
+};
+
+newPassport(jonas);
+checkIn(flight, jonas);
